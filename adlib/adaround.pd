@@ -1,0 +1,12 @@
+#N canvas 577 124 450 300 10;
+#X obj 187 133 mod \$1;
+#X obj 148 76 inlet;
+#X obj 148 98 t f f;
+#X obj 155 170 -;
+#X text 111 20 rounds down to nearest multiple of 1st arg;
+#X obj 158 235 outlet;
+#X connect 0 0 3 1;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 0 0;
+#X connect 3 0 5 0;

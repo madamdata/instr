@@ -1,0 +1,11 @@
+#N canvas 457 256 450 300 10;
+#X obj 115 61 inlet;
+#X text 220 83 prepends without list selector;
+#X obj 115 83 list prepend \$1;
+#X obj 115 105 list trim;
+#X obj 115 127 outlet;
+#X obj 254 53 inlet;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 2 1;

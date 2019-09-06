@@ -1,0 +1,19 @@
+#N canvas 471 194 493 411 10;
+#X text 27 93 savestate is a pdlua script that automates some of the
+drudgery of saving states in abstractions. It is designed to work with
+[canvasargs] from the iemguts library.;
+#X text 24 142 To use \, simply provide arguments listing each of the
+state variables that you would like to persist. The object will generate
+internal sends and receives for those names according to the following
+scheme - [name]snd and [name]rcv.;
+#X obj 28 17 savestate-help-abstraction 2 4 8 16;
+#X text 24 306 To load \, connect a loadbang to a [pack] object that
+collects all the canvas arguments and output to the first inlet of
+[savestate]. The object will update all the connected parameters. To
+see this in action \, open the above abstraction.;
+#X text 23 209 For instance \, if an argument is \$0-var1 as above
+\, the corresponding sends and receives will be \$0-var1snd and \$0-var1rcv.
+Anything sent to \$0-var1snd will be registered by the object and sent
+to canvasargs \, which stores the variables as canvas arguments. Saving
+the patch containing the abstraction will thus save its state.;
+#X text 191 38 <- right click to open;
