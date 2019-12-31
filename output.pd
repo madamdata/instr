@@ -1,14 +1,14 @@
-#N canvas 496 238 625 468 10;
+#N canvas 5 24 1910 997 10;
 #X obj 102 102 cnv 15 146 106 empty empty empty 20 12 0 14 -29002 -66577
 0;
 #X msg 498 182 \; pd dsp \$1;
 #X obj 142 105 tgl 28 0 \$0-dspsnd \$0-dsprcv dsp 3 6 0 10 -259484
--262130 -99849 1 1;
+-262130 -99849 0 1;
 #X obj 363 312 dac~;
 #X obj 408 158 inlet~;
 #X obj 352 157 inlet~;
 #X obj 108 105 vsl 30 97 0.01 1.1 1 0 \$0-volsnd \$0-volrcv vol 5 4
-0 10 -259753 -184321 -261234 4400 1;
+0 10 -259753 -184321 -261234 8818 1;
 #X obj 352 279 *~;
 #X obj 408 280 *~;
 #X floatatom 203 130 5 0 0 2 cpu #0-cpu -, f 5;

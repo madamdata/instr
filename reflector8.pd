@@ -322,33 +322,33 @@
 #X restore 1144 239 pd soundstuff;
 #X obj 839 581 output;
 #X obj 167 83 vsl 30 450 0 1 0 0 \$0-fbLsnd \$0-fbLrcv fbL 0 -9 0 10
--262144 -1 -1 11700 1;
+-262144 -1 -1 20900 1;
 #X obj 200 83 vsl 30 450 0 1 0 0 \$0-fbRsnd \$0-fbRrcv fbR 0 -9 0 10
--262144 -1 -1 12900 1;
+-262144 -1 -1 22200 1;
 #X obj 998 590 adascope 0 18 1;
 #X obj 1102 591 adascope 0 18 1;
 #X obj 1007 460 tgl 35 1 \$0-onoff empty on/off 17 7 0 10 -262144 -1
--1 0 1;
+-1 1 1;
 #X obj 127 82 vsl 25 450 -0.999 -0.95 0 0 \$0-pw1snd \$0-pw1rcv pw
 0 -9 0 10 -262144 -1 -1 916 1;
 #X obj 243 84 vsl 30 450 0.1 80 1 0 \$0-del1snd \$0-del1rcv del1 0
--9 0 10 -262144 -1 -1 0 1;
+-9 0 10 -262144 -1 -1 4726 1;
 #X obj 276 84 vsl 30 450 0.1 80 1 0 \$0-del2snd \$0-del2rcv del2 0
--9 0 10 -262144 -1 -1 0 1;
+-9 0 10 -262144 -1 -1 4726 1;
 #X obj 632 365 vsl 25 250 0 1 0 0 \$0-delmodsnd \$0-delmodrcv delmod
-0 -9 0 10 -262144 -1 -1 500 1;
+0 -9 0 10 -262144 -1 -1 6009 1;
 #X obj 663 379 vsl 25 250 0 1 0 0 \$0-crossmodsnd \$0-crossmodrcv crossmod
-0 -9 0 10 -262144 -1 -1 200 1;
+0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 696 394 vsl 25 250 0 1 0 0 \$0-feedthrusnd \$0-feedthrurcv feedthru
-0 -9 0 10 -262144 -1 -1 15200 1;
+0 -9 0 10 -262144 -1 -1 150 1;
 #X obj 662 67 vsl 25 200 0.2 100 1 0 \$0-tremspdsnd \$0-tremspdrcv
-speed 0 -9 0 10 -262144 -1 -1 13900 0;
+speed 0 -9 0 10 -262144 -1 -1 17333 0;
 #X obj 699 82 vsl 25 200 0 0.999 0 0 \$0-trempwsnd \$0-trempwrcv trempw
-0 -9 0 10 -262144 -1 -1 19900 1;
+0 -9 0 10 -262144 -1 -1 19800 1;
 #X obj 735 103 vsl 25 200 0 1 0 0 \$0-tremphasesnd \$0-tremphasercv
-phase 0 -9 0 10 -262144 -1 -1 10350 1;
+phase 0 -9 0 10 -262144 -1 -1 18150 1;
 #X obj 629 71 vsl 25 200 0 1 0 0 \$0-tremauxsnd \$0-tremauxrcv trem
-0 -9 0 10 -262144 -1 -1 3700 1;
+0 -9 0 10 -262144 -1 -1 8300 1;
 #X obj 675 297 hradio 25 0 0 2 \$0-tremshapesnd \$0-tremshapercv shape
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 627 292 tgl 35 0 \$0-tremmutesnd \$0-tremmutercv empty 17 7
@@ -435,15 +435,15 @@ phase 0 -9 0 10 -262144 -1 -1 10350 1;
 #X connect 33 0 31 0;
 #X restore 1148 267 pd ringmod;
 #X obj 813 70 vsl 25 200 1 15000 1 0 \$0-ringmodpitchsnd \$0-ringmodpitchrcv
-rmpitch 0 -9 0 10 -262144 -1 -1 14641 1;
+rmpitch 0 -9 0 10 -262144 -1 -1 14440 1;
 #X obj 811 286 tgl 35 0 \$0-ringmodonoffsnd \$0-ringmodonoffrcv empty
 17 7 0 10 -262144 -1 -1 0 1;
 #X obj 849 80 vsl 25 200 0 1 0 0 \$0-ringmodblendsnd \$0-ringmodblendrcv
-rmblend 0 -9 0 10 -262144 -1 -1 10100 1;
+rmblend 0 -9 0 10 -262144 -1 -1 14250 1;
 #X obj 884 92 vsl 25 200 0 15 0 0 \$0-ringmoddetunesnd \$0-ringmoddetunercv
-rmdetune 0 -9 0 10 -262144 -1 -1 10150 1;
+rmdetune 0 -9 0 10 -262144 -1 -1 18050 1;
 #X obj 731 408 vsl 20 200 100 15 0 0 \$0-limitsnd \$0-limitrcv lim
-0 -9 0 10 -262144 -1 -1 13700 1;
+0 -9 0 10 -262144 -1 -1 5450 1;
 #N canvas 116 190 600 382 limiter2 1;
 #X obj 7 14 inlet~;
 #X obj 115 56 env~ 1024;
@@ -641,20 +641,20 @@ rmdetune 0 -9 0 10 -262144 -1 -1 10150 1;
 #X obj 952 289 tgl 35 0 \$0-autowahonoffsnd \$0-autowahonoffrcv empty
 17 7 0 10 -262144 -1 -1 0 1;
 #X obj 951 69 vsl 25 200 0.2 45 1 0 \$0-autowahspdsnd \$0-autowahspdrcv
-awspd 0 -9 0 10 -262144 -1 -1 12550 1;
+awspd 0 -9 0 10 -262144 -1 -1 12483 1;
 #N canvas 121 91 1360 716 presets 0;
 #X obj 18 18 cnv 15 196 146 empty empty scars 66 130 0 14 -232252 -241604
 0;
 #X obj 28 28 bng 20 250 50 0 \$0-preset1snd \$0-preset1rcv empty 17
 7 0 10 -261681 -1 -262144;
 #X obj 50 28 bng 20 250 50 0 \$0-preset2snd \$0-preset2rcv empty 17
-7 0 10 -143491 -1 -262144;
+7 0 10 -261681 -1 -262144;
 #X obj 72 28 bng 20 250 50 0 \$0-preset3snd \$0-preset3rcv empty 17
 7 0 10 -261681 -1 -262144;
 #X obj 94 28 bng 20 250 50 0 \$0-preset4snd \$0-preset4rcv empty 17
 7 0 10 -261681 -1 -262144;
 #X obj 116 28 bng 20 250 50 0 \$0-preset5snd \$0-preset5rcv empty 17
-7 0 10 -261681 -1 -262144;
+7 0 10 -143491 -1 -262144;
 #X obj 138 28 bng 20 250 50 0 \$0-preset6snd \$0-preset6rcv empty 17
 7 0 10 -262144 -1 -262144;
 #X obj 160 28 bng 20 250 50 0 \$0-preset7snd \$0-preset7rcv empty 17
@@ -680,7 +680,7 @@ awspd 0 -9 0 10 -262144 -1 -1 12550 1;
 #X obj 28 72 bng 20 250 50 0 \$0-preset17snd \$0-preset17rcv empty
 17 7 0 10 -261681 -1 -262144;
 #X obj 50 72 bng 20 250 50 0 \$0-preset18snd \$0-preset18rcv empty
-17 7 0 10 -262144 -1 -262144;
+17 7 0 10 -261681 -1 -262144;
 #X obj 72 72 bng 20 250 50 0 \$0-preset19snd \$0-preset19rcv empty
 17 7 0 10 -261681 -1 -262144;
 #X obj 94 72 bng 20 250 50 0 \$0-preset20snd \$0-preset20rcv empty
@@ -816,7 +816,9 @@ awspd 0 -9 0 10 -262144 -1 -1 12550 1;
 0.701005 1.65829 1 3.34504 1394.65 28.2613 1.33797 0 89.108;
 #X msg 240 416;
 #X msg 274 416;
-#X msg 91 492;
+#X msg 91 492 0 -0.999 0.521158 0.567929 1.17369 1.17369 0.0151 0.649468
+0 0 0.527638 7.9247 0.999 0.5201 0 1 24.8615 0.527638 7.65075 1 18.4748
+1281.75 34.2412 25 1 73.9447;
 #X msg 125 492;
 #X msg 158 492;
 #X msg 190 492;
@@ -1111,7 +1113,7 @@ awspd 0 -9 0 10 -262144 -1 -1 12550 1;
 #X obj 777 28 r \$0-preset7snd;
 #X obj 898 26 r \$0-preset8snd;
 #X obj 284 485 t b b b;
-#X msg 297 547 2;
+#X msg 297 547 5;
 #X obj 556 586 v \$0-currentpreset;
 #X obj 564 618 makefilename \$0-preset%drcv;
 #X obj 505 664 s;
@@ -1520,7 +1522,7 @@ awspd 0 -9 0 10 -262144 -1 -1 12550 1;
 #N canvas 626 303 676 257 savecolors 0;
 #N canvas 0 0 450 300 (subpatch) 0;
 #X array \$0-saved 41 float 3 black black;
-#A 0 0 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0
+#A 0 0 1 1 1 1 1 0 1 1 1 1 1 1 1 1 0 0 1 1 1 0 0 0 0 1 0 0 0 0 0 0
 0 0 0 1 0 0 0 0 0 0;
 #X coords 0 1 41 0 200 140 1;
 #X restore 30 30 graph;
@@ -1610,12 +1612,12 @@ awspd 0 -9 0 10 -262144 -1 -1 12550 1;
 #X coords 0 -1 1 1 200 150 1 16 16;
 #X restore 116 590 pd presets;
 #X obj 982 79 vsl 25 200 75 5000 1 0 \$0-autowahcentersnd \$0-autowahcenterrcv
-awcent 0 -9 0 10 -262144 -1 -1 8250 1;
+awcent 0 -9 0 10 -262144 -1 -1 16550 1;
 #X obj 1012 90 vsl 25 200 1 36 0 0 \$0-autowahdepthsnd \$0-autowahdepthrcv
-awdepth 0 -9 0 10 -262144 -1 -1 17300 1;
+awdepth 0 -9 0 10 -262144 -1 -1 17450 1;
 #X obj 1041 102 vsl 25 200 1 25 1 0 \$0-autowahshapesnd \$0-autowahshapercv
-awshape 0 -9 0 10 -262144 -1 -1 5100 1;
-#X obj 843 451 simplehip 0 1094.74 5.29851;
+awshape 0 -9 0 10 -262144 -1 -1 4400 1;
+#X obj 843 451 simplehip 0 34.685 5.29851;
 #X obj 24 54 vsl 20 100 0.2 100 1 0 \$0-trempreset1snd \$0-trempreset1rcv
 TSP1 0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 51 54 vsl 20 100 0.2 100 1 0 \$0-trempreset2snd \$0-trempreset2rcv
@@ -1627,11 +1629,11 @@ TSP3 0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 50 115 s \$0-ringmodonoffrcv;
 #X obj 34 60 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
-#X obj 66 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+#X obj 66 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X obj 76 137 s \$0-autowahonoffrcv;
 #X floatatom 174 -2 5 0 0 0 - - -, f 5;
-#X obj 104 61 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 104 61 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 34 95 s \$0-tremmutercv;
 #X obj 422 221 r \$0-trempreset1snd;
@@ -1694,16 +1696,16 @@ TSP3 0 -9 0 10 -262144 -1 -1 0 1;
 0 -8 0 10 -262144 -1 -1 0;
 #X obj 840 360 pitchshifterarp 0 0 0 0 0 0 0 -48 -10 -20.21 0.43 0
 1 1 5 0 37 41;
-#X obj 999 361 pitchshifterarp 0 0 0 0 0 1 0 -6.67 -47 -5.22 -4 -3
+#X obj 999 361 pitchshifterarp 0 0 0 0 0 0 0 -6.67 -47 -5.22 -4 -3
 2 1 5 0 0 46;
 #X obj 1288 203 r \$0-xpos;
 #X obj 1287 269 sig~;
 #X obj 843 491 width;
 #X obj 1288 225 *;
 #X obj 1100 192 tgl 30 0 empty empty x->arp 3 -8 0 10 -262144 -1 -1
-1 1;
+0 1;
 #N canvas 801 24 798 825 scrubber 0;
-#X obj 62 -662 grid grid1 280 0 1 500 -1 1 1 0.001 0.001 0 0 579 352
+#X obj 62 -662 grid grid1 280 0 1 500 -1 1 1 0.001 0.001 0 0 571 281
 ;
 #X obj 253 -45 s \$0-scrubsnd;
 #N canvas 582 443 707 371 xposroutings 0;
@@ -1713,20 +1715,20 @@ TSP3 0 -9 0 10 -262144 -1 -1 0 1;
 #X obj 200 266 s \$0-del1rcv;
 #X obj 278 266 s \$0-del2rcv;
 #X obj 298 44 tgl 25 0 empty empty tremspd -9 -9 0 10 -262144 -1 -1
-0 1;
-#X obj 340 44 tgl 25 0 empty empty delay -1 -8 0 10 -262144 -1 -1 0
+1 1;
+#X obj 340 44 tgl 25 0 empty empty delay -1 -8 0 10 -262144 -1 -1 1
 1;
 #X obj 381 44 tgl 25 0 empty empty delmod -4 -8 0 10 -262144 -1 -1
-0 1;
-#X obj 421 44 tgl 25 0 empty empty awspd 1 -9 0 10 -262144 -1 -1 0
+1 1;
+#X obj 421 44 tgl 25 0 empty empty awspd 1 -9 0 10 -262144 -1 -1 1
 1;
 #X obj 297 85 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 340 85 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 340 85 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 382 85 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 382 85 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 421 85 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 421 85 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X text 467 92 invert;
 #X text 464 44 x routing;
