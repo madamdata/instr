@@ -1,0 +1,12 @@
+#N canvas 364 69 734 540 10;
+#X obj 198 125 expr pow(2 \, (1.0/12));
+#X obj 145 68 inlet~;
+#X obj 145 216 outlet~;
+#X obj 198 139 sig~;
+#X obj 145 171 expr~ pow($v2 \, $v1);
+#X obj 198 111 initbang;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 3 0 4 1;
+#X connect 4 0 2 0;
+#X connect 5 0 0 0;

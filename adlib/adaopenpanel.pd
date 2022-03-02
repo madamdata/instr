@@ -1,0 +1,28 @@
+#N canvas 500 194 816 343 10;
+#X obj 146 54 inlet bang;
+#X obj 154 166 shell;
+#X obj 156 250 outlet file;
+#X obj 55 109 openpanel;
+#X obj 160 201 list prepend symbol;
+#X obj 160 223 list trim;
+#X obj 346 235 s lastdirectory;
+#X obj 250 15 r lastdirectory;
+#X msg 154 133 zenity --file-selection --filename /home/ada/Documents/soundlibrary/DRUMS
+shoptalk.wav;
+#X obj 585 67 list prepend add2;
+#X msg 216 86 set zenity \, add2 --file-selection \, add2 --filename
+;
+#X obj 250 37 t a b;
+#X obj 585 89 list trim;
+#X connect 0 0 8 0;
+#X connect 1 0 4 0;
+#X connect 1 0 6 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X connect 7 0 11 0;
+#X connect 8 0 1 0;
+#X connect 9 0 12 0;
+#X connect 10 0 8 0;
+#X connect 11 0 9 0;
+#X connect 11 1 10 0;
+#X connect 12 0 8 0;

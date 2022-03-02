@@ -1,0 +1,42 @@
+#N canvas 150 80 732 552 10;
+#X obj 71 405 vline~;
+#X obj 50 68 inlet;
+#X obj 121 18 inlet;
+#X obj 138 119 pack 0 0;
+#X obj 85 511 outlet~;
+#X obj 115 40 unpack f f;
+#X msg 226 66 10 500;
+#X obj 69 248 bang;
+#X obj 69 441 pow~ 2;
+#X obj 89 69 inlet;
+#X text 147 241 inlet 1 - bang trigger inlet 2 - curve inlet 3 - attack
+and decay;
+#X msg 65 356 0 0 \, 1 1300 0 \, 0 6500 1300;
+#X msg 164 147 set \, add2 0 \, add2 0 \, addcomma \, add2 1 \, add2
+\$1 \, add2 0 \, addcomma \, add2 0 \, add2 \$2 \$1;
+#X obj 329 320 +;
+#X obj 327 482 outlet autonoteoff;
+#X text 370 329 sums attack and decay for total env time;
+#X text 336 419 sends noteoff message automatically once env is finished
+;
+#X text 333 441 this enables poly to work without voice stealing;
+#X obj 329 398 pipe;
+#X obj 324 461 pack 0 0;
+#X connect 0 0 8 0;
+#X connect 1 0 7 0;
+#X connect 1 0 18 0;
+#X connect 2 0 5 0;
+#X connect 3 0 12 0;
+#X connect 5 0 3 0;
+#X connect 5 0 13 0;
+#X connect 5 1 3 1;
+#X connect 5 1 13 1;
+#X connect 6 0 5 0;
+#X connect 7 0 11 0;
+#X connect 8 0 4 0;
+#X connect 9 0 8 1;
+#X connect 11 0 0 0;
+#X connect 12 0 11 0;
+#X connect 13 0 18 1;
+#X connect 18 0 19 0;
+#X connect 19 0 14 0;

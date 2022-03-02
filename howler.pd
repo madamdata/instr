@@ -1,0 +1,1014 @@
+#N canvas 1386 36 530 1008 10;
+#N canvas 5 57 1910 987 (subpatch) 0;
+#X array howlersample 4.04653e+06 float 0;
+#X coords 0 1 4.04653e+06 -1 1000 140 1 0 0;
+#X restore 19 187 graph;
+#X obj 14 106 bng 50 250 50 0 loadsnd loadrcv LOAD 17 15 0 10 -261234
+-1 -128992;
+#X obj 17 394 hsl 1000 20 0 1 0 1 voice1startsnd voice1startrcv voice_1_start
+-2 10 0 10 -158639 -1 -1 81518 1;
+#X obj 99 62 output;
+#X obj 16 538 hsl 1000 20 0 1 0 1 voice2startsnd voice2startrcv voice_2_start
+-2 10 0 10 -158639 -1 -1 16509 1;
+#N canvas 964 36 472 1008 load 0;
+#X obj 384 313 soundfiler;
+#X obj 391 376 v end_\$0;
+#X obj 409 347 s \$0-size;
+#X obj 370 196 openpanel;
+#X floatatom 334 352 5 0 0 0 - - -;
+#X obj 344 121 r loadsnd;
+#X msg 372 254 read -resize \$1 howlersample;
+#X connect 0 0 1 0;
+#X connect 0 0 2 0;
+#X connect 0 0 4 0;
+#X connect 3 0 6 0;
+#X connect 5 0 3 0;
+#X connect 6 0 0 0;
+#X restore 468 46 pd load;
+#X obj 18 344 hsl 1000 10 0 1 0 0 empty voice1playheadrcv voice_1_playhead
+-2 6 0 10 -1 -257985 -262144 89012 1;
+#X obj 17 414 hsl 1000 20 -20 100 0 1 voice1speedsnd voice1speedrcv
+voice_1_speed -2 10 0 10 -174912 -1 -1 99900 1;
+#X obj 1021 414 bng 18 250 50 0 empty empty zero_speed 17 7 0 10 -262144
+-1 -1;
+#X msg 1146 454 \; voice1speedrcv 0;
+#X obj 17 434 hsl 1000 20 -1200 1200 0 1 voice1transpsnd voice1transprcv
+voice_1_transposition -2 10 0 10 -204800 -1 -1 6800 1;
+#X obj 1021 432 bng 18 250 50 0 empty empty zero_transp 17 7 0 10 -262144
+-1 -1;
+#X msg 1148 486 \; voice1transprcv 0;
+#X obj 1021 396 bng 18 250 50 0 voice1resetsnd empty reset_to_start
+17 7 0 10 -262144 -1 -1;
+#X obj 17 454 hsl 1000 20 0 1 0 1 voice1smearsnd voice1smearrcv voice_1_smear
+-2 10 0 10 -105216 -1 -1 87600 1;
+#X obj 18 355 hsl 1000 10 0 1 0 0 empty voice2playheadrcv voice_2_playhead
+-2 6 0 10 -1 -257985 -262144 79930 1;
+#X obj 7 182 cnv 15 1025 150 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 16 558 hsl 1000 20 -20 100 0 1 voice2speedsnd voice2speedrcv
+voice_2_speed -2 10 0 10 -171136 -1 -66577 55850 1;
+#X obj 16 578 hsl 1000 20 -1200 1200 0 1 voice2transpsnd voice2transprcv
+voice_2_transposition -2 10 0 10 -204480 -1 -1 21050 1;
+#X obj 16 598 hsl 1000 20 0 1 0 1 voice2smearsnd voice2smearrcv voice_2_smear
+-2 10 0 10 -6784 -1 -1 76900 1;
+#X obj 1020 559 bng 18 250 50 0 empty empty zero_speed 17 7 0 10 -262144
+-1 -1;
+#X obj 1020 579 bng 18 250 50 0 empty empty zero_transp 17 7 0 10 -262144
+-1 -1;
+#X obj 1020 538 bng 18 250 50 0 voice2resetsnd empty reset_to_start
+17 7 0 10 -262144 -1 -1;
+#X msg 1146 577 \; voice2speedrcv 0;
+#X msg 1147 609 \; voice2transprcv 0;
+#X obj 17 474 hsl 1000 20 0 2 0 1 voice1volumesnd voice1volumercv voice_1_volume
+-2 10 0 10 -199103 -1 -1 57400 1;
+#X obj 16 618 hsl 1000 20 0 2 0 1 voice2volumesnd voice2volumercv voice_2_volume
+-2 10 0 10 -223615 -1 -1 64100 1;
+#X obj 17 494 hsl 1000 20 0 1 0 1 voice1pansnd voice1panrcv voice_1_pan
+-2 10 0 10 -216568 -1 -1 29000 1;
+#X obj 16 638 hsl 1000 20 0 1 0 1 voice2pansnd voice2panrcv voice_2_pan
+-2 10 0 10 -212472 -1 -1 72900 1;
+#X obj 223 29 catch~ \$0-R;
+#X obj 97 29 catch~ \$0-L;
+#N canvas 964 36 472 1008 soundstuff 0;
+#X obj 147 165 tgl 18 0 voice1playsnd voice1playrcv Play 17 7 0 10
+-228856 -1 -1 1 1;
+#N canvas 1284 36 632 1008 Pitch.Shift-Time.Stretch 0;
+#X obj 178 227 +;
+#X obj 267 127 * 2048;
+#X obj 118 50 inlet;
+#X obj 267 50 inlet;
+#X obj 66 51 inlet;
+#X obj 27 164 f;
+#X obj 18 133 bang~;
+#X obj 267 224 / 4;
+#X obj 42 233 t f f;
+#X obj 27 189 spigot;
+#X obj 66 132 tgl 15 0 empty empty empty 17 7 0 10 -228856 -1 -1 1
+1;
+#X text 67 30 Play;
+#X obj 267 265 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-228856 -1 -1 281.333 256;
+#X floatatom 267 167 5 0 0 0 - - -;
+#X obj 132 152 r \$0-size;
+#X text 142 184 loop;
+#X obj 106 192 wrap2;
+#X obj 118 79 / 100;
+#X text 117 30 Speed (%);
+#X obj 118 110 * 512;
+#X text 162 112 hop size;
+#X obj 100 153 +;
+#X obj 267 98 cents2ratio;
+#X text 320 126 window size;
+#X text 276 187 new window size;
+#X text 325 263 new hop size;
+#X text 213 29 transposition (cents), f 13;
+#X obj 59 433 -~;
+#X obj 248 415 r \$0-size;
+#X text 261 455 loop;
+#X obj 59 462 wrap2~;
+#X obj 209 453 wrap2~;
+#X obj 88 283 envgen~;
+#X obj 341 221 block~ 2048 4;
+#X obj 210 917 outlet~;
+#X obj 173 830 rifft~;
+#X obj 210 880 /~ 3072;
+#X obj 249 625 -~;
+#X obj 59 551 rfft~;
+#X obj 209 551 rfft~;
+#X obj 59 526 hann~;
+#X obj 209 526 hann~;
+#X obj 210 852 hann~;
+#X obj 49 578 car2pol~;
+#X obj 196 581 car2pol~;
+#X obj 196 672 pol2car~;
+#X text 115 578 back;
+#X text 265 580 front;
+#X obj 249 650 +~;
+#X text 67 639 Phase Accumulation =====>;
+#X text 881 23 So we have a counter that adds a step parameter \, which
+depends on a speed the hop size. This happens at every block because
+of the [bang~] object. The transposition defines a new grain size and
+also a new hop size., f 63;
+#X text 871 154 The new hop size is used to access the last ("back")
+window. The phase accumulation consists in 1) get the phase difference
+between the front and back window \, and 2) sum that to the last phase
+output. Step 2 is done with a feedback look via [tabsend~] & [tabreceive~]
+objects. Check the diagram below \, from Miller Puckette's book and
+the subpatch below with more information on how the phase accumulation
+process works:, f 63;
+#X obj 29 258 pack float 46.43 float;
+#X text 893 86 The grain controls generated here are sent to an [envgen~]
+object to read the samples. The step counter is the starting point
+of the sample \, the time duration of the grain is the window size
+in ms (46.43 in a sample rate of 44100 hz)., f 63;
+#X obj 27 211 +;
+#X obj 351 43 inlet start;
+#X obj 359 84 *;
+#X obj 430 678 expr 1-$f1;
+#X text 439 703 fade between a) real part * noise and real part * noise
+(phase offset) and b) real part and imaginary part;
+#X obj 401 375 /;
+#X obj 389 458 s voice1playheadrcv;
+#X msg 550 111 0;
+#X obj 288 704 noise~;
+#X obj 288 750 cos~;
+#X obj 211 792 *~;
+#X obj 266 775 *~;
+#X obj 258 806 *~;
+#X obj 63 491 tabread4~ howlersample;
+#X obj 209 493 tabread4~ howlersample;
+#X obj 289 626 tabreceive~ \$0-accum1;
+#X obj 291 653 table \$0-accum1 1024;
+#X obj 285 680 tabsend~ \$0-accum1;
+#X obj 544 56 inlet reset;
+#X obj 591 460 inlet;
+#X obj 288 727 -~ 0.25;
+#X obj 167 753 *~;
+#X obj 114 697 noise~;
+#X obj 114 720 cos~;
+#X obj 167 776 *~;
+#X obj 114 787 *~;
+#X floatatom 188 182 15 0 0 0 - - -;
+#X floatatom 401 398 5 0 0 0 - - -;
+#X floatatom 238 368 15 0 0 0 - - -;
+#X connect 0 0 52 2;
+#X connect 1 0 0 1;
+#X connect 1 0 13 0;
+#X connect 2 0 17 0;
+#X connect 3 0 22 0;
+#X connect 4 0 10 0;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 7 0 12 0;
+#X connect 8 0 52 0;
+#X connect 8 0 59 0;
+#X connect 8 0 82 0;
+#X connect 8 1 0 0;
+#X connect 9 0 21 0;
+#X connect 9 0 54 0;
+#X connect 10 0 9 1;
+#X connect 12 0 27 1;
+#X connect 13 0 7 0;
+#X connect 14 0 16 2;
+#X connect 14 0 56 1;
+#X connect 14 0 59 1;
+#X connect 16 0 5 1;
+#X connect 16 0 80 0;
+#X connect 17 0 19 0;
+#X connect 19 0 21 1;
+#X connect 21 0 16 0;
+#X connect 22 0 1 0;
+#X connect 27 0 30 0;
+#X connect 28 0 30 2;
+#X connect 28 0 31 2;
+#X connect 30 0 67 0;
+#X connect 31 0 68 0;
+#X connect 32 0 27 0;
+#X connect 32 0 31 0;
+#X connect 35 0 42 0;
+#X connect 36 0 34 0;
+#X connect 37 0 48 0;
+#X connect 38 0 43 0;
+#X connect 38 1 43 1;
+#X connect 39 0 44 0;
+#X connect 39 1 44 1;
+#X connect 40 0 38 0;
+#X connect 41 0 39 0;
+#X connect 42 0 36 0;
+#X connect 43 1 37 1;
+#X connect 44 0 45 0;
+#X connect 44 1 37 0;
+#X connect 45 0 65 0;
+#X connect 45 0 75 0;
+#X connect 45 0 79 0;
+#X connect 45 1 64 0;
+#X connect 48 0 45 1;
+#X connect 48 0 71 0;
+#X connect 52 0 32 0;
+#X connect 54 0 8 0;
+#X connect 55 0 56 0;
+#X connect 56 0 54 1;
+#X connect 57 0 64 1;
+#X connect 57 0 79 1;
+#X connect 59 0 60 0;
+#X connect 59 0 81 0;
+#X connect 61 0 5 0;
+#X connect 62 0 74 0;
+#X connect 63 0 65 1;
+#X connect 64 0 35 1;
+#X connect 65 0 66 0;
+#X connect 66 0 35 1;
+#X connect 67 0 40 0;
+#X connect 68 0 41 0;
+#X connect 69 0 48 1;
+#X connect 72 0 61 0;
+#X connect 73 0 57 0;
+#X connect 73 0 66 1;
+#X connect 73 0 78 1;
+#X connect 74 0 63 0;
+#X connect 75 0 78 0;
+#X connect 76 0 77 0;
+#X connect 77 0 75 1;
+#X connect 78 0 35 0;
+#X connect 79 0 35 0;
+#X restore 212 229 pd Pitch.Shift-Time.Stretch;
+#X obj 283 154 r voice1speedsnd;
+#X floatatom 283 177 5 0 0 0 - - -;
+#X obj 322 87 r voice1transpsnd;
+#X obj 421 77 r voice1startsnd;
+#X msg 486 250 \$1 25;
+#X obj 486 273 line~;
+#X obj 218 258 *~;
+#X obj 195 312 *~;
+#X obj 246 314 *~;
+#X obj 383 317 r voice1pansnd;
+#X obj 325 342 expr 1-$f1;
+#X msg 379 370 \$1 25;
+#X obj 379 393 line~;
+#X msg 333 372 \$1 25;
+#X obj 333 395 line~;
+#X obj 684 157 tgl 18 0 voice1playsnd voice1playrcv Play 17 7 0 10
+-228856 -1 -1 1 1;
+#N canvas 5 57 1910 987 Pitch.Shift-Time.Stretch 0;
+#X obj 178 227 +;
+#X obj 267 127 * 2048;
+#X obj 118 50 inlet;
+#X obj 267 50 inlet;
+#X obj 66 51 inlet;
+#X obj 27 164 f;
+#X obj 18 133 bang~;
+#X obj 267 224 / 4;
+#X obj 42 233 t f f;
+#X obj 27 189 spigot;
+#X obj 66 132 tgl 15 0 empty empty empty 17 7 0 10 -228856 -1 -1 1
+1;
+#X text 67 30 Play;
+#X obj 267 265 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-228856 -1 -1 342.609 256;
+#X floatatom 267 167 5 0 0 0 - - -;
+#X obj 132 152 r \$0-size;
+#X text 142 184 loop;
+#X obj 106 192 wrap2;
+#X obj 118 79 / 100;
+#X text 117 30 Speed (%);
+#X obj 118 110 * 512;
+#X text 162 112 hop size;
+#X obj 100 153 +;
+#X obj 267 98 cents2ratio;
+#X text 320 126 window size;
+#X text 276 187 new window size;
+#X text 325 263 new hop size;
+#X text 213 29 transposition (cents), f 13;
+#X obj 59 433 -~;
+#X obj 248 415 r \$0-size;
+#X text 261 455 loop;
+#X obj 59 462 wrap2~;
+#X obj 209 453 wrap2~;
+#X obj 88 283 envgen~;
+#X obj 341 221 block~ 2048 4;
+#X obj 210 917 outlet~;
+#X obj 173 830 rifft~;
+#X obj 210 880 /~ 3072;
+#X obj 249 625 -~;
+#X obj 59 551 rfft~;
+#X obj 209 551 rfft~;
+#X obj 59 526 hann~;
+#X obj 209 526 hann~;
+#X obj 210 852 hann~;
+#X obj 49 578 car2pol~;
+#X obj 196 581 car2pol~;
+#X obj 196 672 pol2car~;
+#X text 115 578 back;
+#X text 265 580 front;
+#X obj 249 650 +~;
+#X text 67 639 Phase Accumulation =====>;
+#X text 881 23 So we have a counter that adds a step parameter \, which
+depends on a speed the hop size. This happens at every block because
+of the [bang~] object. The transposition defines a new grain size and
+also a new hop size., f 63;
+#X text 871 154 The new hop size is used to access the last ("back")
+window. The phase accumulation consists in 1) get the phase difference
+between the front and back window \, and 2) sum that to the last phase
+output. Step 2 is done with a feedback look via [tabsend~] & [tabreceive~]
+objects. Check the diagram below \, from Miller Puckette's book and
+the subpatch below with more information on how the phase accumulation
+process works:, f 63;
+#X obj 29 258 pack float 46.43 float;
+#X text 893 86 The grain controls generated here are sent to an [envgen~]
+object to read the samples. The step counter is the starting point
+of the sample \, the time duration of the grain is the window size
+in ms (46.43 in a sample rate of 44100 hz)., f 63;
+#X obj 27 211 +;
+#X obj 351 43 inlet start;
+#X obj 359 84 *;
+#X obj 474 671 expr 1-$f1;
+#X text 439 703 fade between a) real part * noise and real part * noise
+(phase offset) and b) real part and imaginary part;
+#X obj 401 375 /;
+#X msg 479 92 0;
+#X obj 287 717 noise~;
+#X obj 287 740 cos~;
+#X obj 211 792 *~;
+#X obj 266 775 *~;
+#X obj 258 806 *~;
+#X obj 63 491 tabread4~ howlersample;
+#X obj 209 493 tabread4~ howlersample;
+#X obj 515 54 inlet reset;
+#X obj 618 382 inlet smear;
+#X obj 289 626 tabreceive~ \$0-accum2;
+#X obj 292 653 table \$0-accum2 1024;
+#X obj 285 680 tabsend~ \$0-accum2;
+#X obj 411 449 s voice2playheadrcv;
+#X obj 167 753 *~;
+#X obj 114 697 noise~;
+#X obj 114 720 cos~;
+#X obj 167 776 *~;
+#X obj 114 787 *~;
+#X connect 0 0 52 2;
+#X connect 1 0 0 1;
+#X connect 1 0 13 0;
+#X connect 2 0 17 0;
+#X connect 3 0 22 0;
+#X connect 4 0 10 0;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 7 0 12 0;
+#X connect 8 0 52 0;
+#X connect 8 0 59 0;
+#X connect 8 1 0 0;
+#X connect 9 0 21 0;
+#X connect 9 0 54 0;
+#X connect 10 0 9 1;
+#X connect 12 0 27 1;
+#X connect 13 0 7 0;
+#X connect 14 0 16 2;
+#X connect 14 0 56 1;
+#X connect 14 0 59 1;
+#X connect 16 0 5 1;
+#X connect 17 0 19 0;
+#X connect 19 0 21 1;
+#X connect 21 0 16 0;
+#X connect 22 0 1 0;
+#X connect 27 0 30 0;
+#X connect 28 0 30 2;
+#X connect 28 0 31 2;
+#X connect 30 0 66 0;
+#X connect 31 0 67 0;
+#X connect 32 0 27 0;
+#X connect 32 0 31 0;
+#X connect 35 0 42 0;
+#X connect 36 0 34 0;
+#X connect 37 0 48 0;
+#X connect 38 0 43 0;
+#X connect 38 1 43 1;
+#X connect 39 0 44 0;
+#X connect 39 1 44 1;
+#X connect 40 0 38 0;
+#X connect 41 0 39 0;
+#X connect 42 0 36 0;
+#X connect 43 1 37 1;
+#X connect 44 0 45 0;
+#X connect 44 1 37 0;
+#X connect 45 0 64 0;
+#X connect 45 0 74 0;
+#X connect 45 0 78 0;
+#X connect 45 1 63 0;
+#X connect 48 0 45 1;
+#X connect 48 0 72 0;
+#X connect 52 0 32 0;
+#X connect 54 0 8 0;
+#X connect 55 0 56 0;
+#X connect 56 0 54 1;
+#X connect 57 0 63 1;
+#X connect 57 0 78 1;
+#X connect 59 0 73 0;
+#X connect 60 0 5 0;
+#X connect 61 0 62 0;
+#X connect 62 0 64 1;
+#X connect 63 0 35 1;
+#X connect 64 0 65 0;
+#X connect 65 0 35 1;
+#X connect 66 0 40 0;
+#X connect 67 0 41 0;
+#X connect 68 0 60 0;
+#X connect 69 0 57 0;
+#X connect 69 0 65 1;
+#X connect 69 0 77 1;
+#X connect 70 0 48 1;
+#X connect 74 0 77 0;
+#X connect 75 0 76 0;
+#X connect 76 0 74 1;
+#X connect 77 0 35 0;
+#X connect 78 0 35 0;
+#X restore 749 221 pd Pitch.Shift-Time.Stretch;
+#X floatatom 820 169 5 0 0 0 - - -;
+#X msg 1074 231 \$1 25;
+#X obj 1074 254 line~;
+#X obj 755 250 *~;
+#X obj 732 304 *~;
+#X obj 783 306 *~;
+#X obj 870 338 expr 1-$f1;
+#X msg 924 366 \$1 25;
+#X obj 924 389 line~;
+#X msg 878 368 \$1 25;
+#X obj 878 391 line~;
+#X obj 927 313 r voice2pansnd;
+#X obj 1074 208 r voice2volumesnd;
+#X obj 958 69 r voice2startsnd;
+#X obj 860 79 r voice2transpsnd;
+#X obj 819 148 r voice2speedsnd;
+#X obj 1092 97 r voice2resetsnd;
+#X obj 1140 153 r voice2smearsnd;
+#X obj 478 120 r voice1resetsnd;
+#X obj 537 157 r voice1smearsnd;
+#X obj 265 419 throw~ \$0-R;
+#X obj 142 411 throw~ \$0-L;
+#X obj 692 431 throw~ \$0-L;
+#X obj 787 427 throw~ \$0-R;
+#X obj 486 227 r voice1volumesnd;
+#X obj 192 58 loadbang;
+#X msg 192 81 1;
+#X obj 157 615 tgl 18 0 voice1playsnd voice1playrcv Play 17 7 0 10
+-228856 -1 -1 1 1;
+#N canvas 1156 36 376 1008 Pitch.Shift-Time.Stretch 0;
+#X obj 178 227 +;
+#X obj 267 127 * 2048;
+#X obj 118 50 inlet;
+#X obj 267 50 inlet;
+#X obj 66 51 inlet;
+#X obj 27 164 f;
+#X obj 18 133 bang~;
+#X obj 267 224 / 4;
+#X obj 42 233 t f f;
+#X obj 27 189 spigot;
+#X obj 66 132 tgl 15 0 empty empty empty 17 7 0 10 -228856 -1 -1 1
+1;
+#X text 67 30 Play;
+#X obj 267 265 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-228856 -1 -1 299.461 256;
+#X floatatom 267 167 5 0 0 0 - - -;
+#X obj 132 152 r \$0-size;
+#X text 142 184 loop;
+#X obj 106 192 wrap2;
+#X obj 118 79 / 100;
+#X text 117 30 Speed (%);
+#X obj 118 110 * 512;
+#X text 162 112 hop size;
+#X obj 100 153 +;
+#X obj 267 98 cents2ratio;
+#X text 320 126 window size;
+#X text 276 187 new window size;
+#X text 325 263 new hop size;
+#X text 213 29 transposition (cents), f 13;
+#X obj 59 433 -~;
+#X obj 248 415 r \$0-size;
+#X text 261 455 loop;
+#X obj 59 462 wrap2~;
+#X obj 209 453 wrap2~;
+#X obj 88 283 envgen~;
+#X obj 341 221 block~ 2048 4;
+#X obj 210 917 outlet~;
+#X obj 173 830 rifft~;
+#X obj 210 880 /~ 3072;
+#X obj 249 625 -~;
+#X obj 59 551 rfft~;
+#X obj 209 551 rfft~;
+#X obj 59 526 hann~;
+#X obj 209 526 hann~;
+#X obj 210 852 hann~;
+#X obj 49 578 car2pol~;
+#X obj 196 581 car2pol~;
+#X obj 196 672 pol2car~;
+#X text 115 578 back;
+#X text 265 580 front;
+#X obj 249 650 +~;
+#X text 67 639 Phase Accumulation =====>;
+#X text 881 23 So we have a counter that adds a step parameter \, which
+depends on a speed the hop size. This happens at every block because
+of the [bang~] object. The transposition defines a new grain size and
+also a new hop size., f 63;
+#X text 871 154 The new hop size is used to access the last ("back")
+window. The phase accumulation consists in 1) get the phase difference
+between the front and back window \, and 2) sum that to the last phase
+output. Step 2 is done with a feedback look via [tabsend~] & [tabreceive~]
+objects. Check the diagram below \, from Miller Puckette's book and
+the subpatch below with more information on how the phase accumulation
+process works:, f 63;
+#X obj 29 258 pack float 46.43 float;
+#X text 893 86 The grain controls generated here are sent to an [envgen~]
+object to read the samples. The step counter is the starting point
+of the sample \, the time duration of the grain is the window size
+in ms (46.43 in a sample rate of 44100 hz)., f 63;
+#X obj 27 211 +;
+#X obj 351 43 inlet start;
+#X obj 359 84 *;
+#X obj 474 671 expr 1-$f1;
+#X text 439 703 fade between a) real part * noise and real part * noise
+(phase offset) and b) real part and imaginary part;
+#X obj 401 375 /;
+#X msg 550 111 0;
+#X obj 287 717 noise~;
+#X obj 287 740 cos~;
+#X obj 211 792 *~;
+#X obj 266 775 *~;
+#X obj 258 806 *~;
+#X obj 63 491 tabread4~ howlersample;
+#X obj 209 493 tabread4~ howlersample;
+#X obj 544 56 inlet reset;
+#X obj 591 460 inlet;
+#X obj 401 398 s voice3playheadrcv;
+#X obj 291 625 tabreceive~ \$0-accum3;
+#X obj 291 653 table \$0-accum3 1024;
+#X obj 285 680 tabsend~ \$0-accum3;
+#X obj 167 753 *~;
+#X obj 114 697 noise~;
+#X obj 114 720 cos~;
+#X obj 167 776 *~;
+#X obj 114 787 *~;
+#X connect 0 0 52 2;
+#X connect 1 0 0 1;
+#X connect 1 0 13 0;
+#X connect 2 0 17 0;
+#X connect 3 0 22 0;
+#X connect 4 0 10 0;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 7 0 12 0;
+#X connect 8 0 52 0;
+#X connect 8 0 59 0;
+#X connect 8 1 0 0;
+#X connect 9 0 21 0;
+#X connect 9 0 54 0;
+#X connect 10 0 9 1;
+#X connect 12 0 27 1;
+#X connect 13 0 7 0;
+#X connect 14 0 16 2;
+#X connect 14 0 56 1;
+#X connect 14 0 59 1;
+#X connect 16 0 5 1;
+#X connect 17 0 19 0;
+#X connect 19 0 21 1;
+#X connect 21 0 16 0;
+#X connect 22 0 1 0;
+#X connect 27 0 30 0;
+#X connect 28 0 30 2;
+#X connect 28 0 31 2;
+#X connect 30 0 66 0;
+#X connect 31 0 67 0;
+#X connect 32 0 27 0;
+#X connect 32 0 31 0;
+#X connect 35 0 42 0;
+#X connect 36 0 34 0;
+#X connect 37 0 48 0;
+#X connect 38 0 43 0;
+#X connect 38 1 43 1;
+#X connect 39 0 44 0;
+#X connect 39 1 44 1;
+#X connect 40 0 38 0;
+#X connect 41 0 39 0;
+#X connect 42 0 36 0;
+#X connect 43 1 37 1;
+#X connect 44 0 45 0;
+#X connect 44 1 37 0;
+#X connect 45 0 64 0;
+#X connect 45 0 74 0;
+#X connect 45 0 78 0;
+#X connect 45 1 63 0;
+#X connect 48 0 45 1;
+#X connect 48 0 73 0;
+#X connect 52 0 32 0;
+#X connect 54 0 8 0;
+#X connect 55 0 56 0;
+#X connect 56 0 54 1;
+#X connect 57 0 63 1;
+#X connect 57 0 78 1;
+#X connect 59 0 70 0;
+#X connect 60 0 5 0;
+#X connect 61 0 62 0;
+#X connect 62 0 64 1;
+#X connect 63 0 35 1;
+#X connect 64 0 65 0;
+#X connect 65 0 35 1;
+#X connect 66 0 40 0;
+#X connect 67 0 41 0;
+#X connect 68 0 60 0;
+#X connect 69 0 57 0;
+#X connect 69 0 65 1;
+#X connect 69 0 77 1;
+#X connect 71 0 48 1;
+#X connect 74 0 77 0;
+#X connect 75 0 76 0;
+#X connect 76 0 74 1;
+#X connect 77 0 35 0;
+#X connect 78 0 35 0;
+#X restore 222 679 pd Pitch.Shift-Time.Stretch;
+#X floatatom 293 627 5 0 0 0 - - -;
+#X msg 496 700 \$1 25;
+#X obj 496 723 line~;
+#X obj 228 708 *~;
+#X obj 205 762 *~;
+#X obj 256 764 *~;
+#X obj 335 792 expr 1-$f1;
+#X msg 389 820 \$1 25;
+#X obj 389 843 line~;
+#X msg 343 822 \$1 25;
+#X obj 343 845 line~;
+#X obj 694 607 tgl 18 0 voice1playsnd voice1playrcv Play 17 7 0 10
+-228856 -1 -1 1 1;
+#N canvas 5 57 1910 987 Pitch.Shift-Time.Stretch 0;
+#X obj 178 227 +;
+#X obj 267 127 * 2048;
+#X obj 118 50 inlet;
+#X obj 267 50 inlet;
+#X obj 66 51 inlet;
+#X obj 27 164 f;
+#X obj 18 133 bang~;
+#X obj 267 224 / 4;
+#X obj 42 233 t f f;
+#X obj 27 189 spigot;
+#X obj 66 132 tgl 15 0 empty empty empty 17 7 0 10 -228856 -1 -1 1
+1;
+#X text 67 30 Play;
+#X obj 267 265 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-228856 -1 -1 259.938 256;
+#X floatatom 267 167 5 0 0 0 - - -;
+#X obj 132 152 r \$0-size;
+#X text 142 184 loop;
+#X obj 106 192 wrap2;
+#X obj 118 79 / 100;
+#X text 117 30 Speed (%);
+#X obj 118 110 * 512;
+#X text 162 112 hop size;
+#X obj 100 153 +;
+#X obj 267 98 cents2ratio;
+#X text 320 126 window size;
+#X text 276 187 new window size;
+#X text 325 263 new hop size;
+#X text 213 29 transposition (cents), f 13;
+#X obj 59 433 -~;
+#X obj 248 415 r \$0-size;
+#X text 261 455 loop;
+#X obj 59 462 wrap2~;
+#X obj 209 453 wrap2~;
+#X obj 88 283 envgen~;
+#X obj 341 221 block~ 2048 4;
+#X obj 210 917 outlet~;
+#X obj 173 830 rifft~;
+#X obj 210 880 /~ 3072;
+#X obj 249 625 -~;
+#X obj 59 551 rfft~;
+#X obj 209 551 rfft~;
+#X obj 59 526 hann~;
+#X obj 209 526 hann~;
+#X obj 210 852 hann~;
+#X obj 49 578 car2pol~;
+#X obj 196 581 car2pol~;
+#X obj 196 672 pol2car~;
+#X text 115 578 back;
+#X text 265 580 front;
+#X obj 249 650 +~;
+#X text 67 639 Phase Accumulation =====>;
+#X text 881 23 So we have a counter that adds a step parameter \, which
+depends on a speed the hop size. This happens at every block because
+of the [bang~] object. The transposition defines a new grain size and
+also a new hop size., f 63;
+#X text 871 154 The new hop size is used to access the last ("back")
+window. The phase accumulation consists in 1) get the phase difference
+between the front and back window \, and 2) sum that to the last phase
+output. Step 2 is done with a feedback look via [tabsend~] & [tabreceive~]
+objects. Check the diagram below \, from Miller Puckette's book and
+the subpatch below with more information on how the phase accumulation
+process works:, f 63;
+#X obj 29 258 pack float 46.43 float;
+#X text 893 86 The grain controls generated here are sent to an [envgen~]
+object to read the samples. The step counter is the starting point
+of the sample \, the time duration of the grain is the window size
+in ms (46.43 in a sample rate of 44100 hz)., f 63;
+#X obj 27 211 +;
+#X obj 351 43 inlet start;
+#X obj 359 84 *;
+#X obj 474 671 expr 1-$f1;
+#X text 439 703 fade between a) real part * noise and real part * noise
+(phase offset) and b) real part and imaginary part;
+#X obj 401 375 /;
+#X msg 479 92 0;
+#X obj 287 717 noise~;
+#X obj 287 740 cos~;
+#X obj 211 792 *~;
+#X obj 266 775 *~;
+#X obj 258 806 *~;
+#X obj 63 491 tabread4~ howlersample;
+#X obj 209 493 tabread4~ howlersample;
+#X obj 515 54 inlet reset;
+#X obj 618 382 inlet smear;
+#X obj 411 449 s voice4playheadrcv;
+#X obj 290 626 tabreceive~ \$0-accum4;
+#X obj 290 656 table \$0-accum4 1024;
+#X obj 285 680 tabsend~ \$0-accum4;
+#X obj 167 753 *~;
+#X obj 114 697 noise~;
+#X obj 114 720 cos~;
+#X obj 167 776 *~;
+#X obj 114 787 *~;
+#X connect 0 0 52 2;
+#X connect 1 0 0 1;
+#X connect 1 0 13 0;
+#X connect 2 0 17 0;
+#X connect 3 0 22 0;
+#X connect 4 0 10 0;
+#X connect 5 0 9 0;
+#X connect 6 0 5 0;
+#X connect 7 0 12 0;
+#X connect 8 0 52 0;
+#X connect 8 0 59 0;
+#X connect 8 1 0 0;
+#X connect 9 0 21 0;
+#X connect 9 0 54 0;
+#X connect 10 0 9 1;
+#X connect 12 0 27 1;
+#X connect 13 0 7 0;
+#X connect 14 0 16 2;
+#X connect 14 0 56 1;
+#X connect 14 0 59 1;
+#X connect 16 0 5 1;
+#X connect 17 0 19 0;
+#X connect 19 0 21 1;
+#X connect 21 0 16 0;
+#X connect 22 0 1 0;
+#X connect 27 0 30 0;
+#X connect 28 0 30 2;
+#X connect 28 0 31 2;
+#X connect 30 0 66 0;
+#X connect 31 0 67 0;
+#X connect 32 0 27 0;
+#X connect 32 0 31 0;
+#X connect 35 0 42 0;
+#X connect 36 0 34 0;
+#X connect 37 0 48 0;
+#X connect 38 0 43 0;
+#X connect 38 1 43 1;
+#X connect 39 0 44 0;
+#X connect 39 1 44 1;
+#X connect 40 0 38 0;
+#X connect 41 0 39 0;
+#X connect 42 0 36 0;
+#X connect 43 1 37 1;
+#X connect 44 0 45 0;
+#X connect 44 1 37 0;
+#X connect 45 0 64 0;
+#X connect 45 0 74 0;
+#X connect 45 0 78 0;
+#X connect 45 1 63 0;
+#X connect 48 0 45 1;
+#X connect 48 0 73 0;
+#X connect 52 0 32 0;
+#X connect 54 0 8 0;
+#X connect 55 0 56 0;
+#X connect 56 0 54 1;
+#X connect 57 0 63 1;
+#X connect 57 0 78 1;
+#X connect 59 0 70 0;
+#X connect 60 0 5 0;
+#X connect 61 0 62 0;
+#X connect 62 0 64 1;
+#X connect 63 0 35 1;
+#X connect 64 0 65 0;
+#X connect 65 0 35 1;
+#X connect 66 0 40 0;
+#X connect 67 0 41 0;
+#X connect 68 0 60 0;
+#X connect 69 0 57 0;
+#X connect 69 0 65 1;
+#X connect 69 0 77 1;
+#X connect 71 0 48 1;
+#X connect 74 0 77 0;
+#X connect 75 0 76 0;
+#X connect 76 0 74 1;
+#X connect 77 0 35 0;
+#X connect 78 0 35 0;
+#X restore 759 671 pd Pitch.Shift-Time.Stretch;
+#X floatatom 830 619 5 0 0 0 - - -;
+#X msg 1084 681 \$1 25;
+#X obj 1084 704 line~;
+#X obj 765 700 *~;
+#X obj 742 754 *~;
+#X obj 793 756 *~;
+#X obj 880 788 expr 1-$f1;
+#X msg 934 816 \$1 25;
+#X obj 934 839 line~;
+#X msg 888 818 \$1 25;
+#X obj 888 841 line~;
+#X obj 275 869 throw~ \$0-R;
+#X obj 152 861 throw~ \$0-L;
+#X obj 702 881 throw~ \$0-L;
+#X obj 797 877 throw~ \$0-R;
+#X obj 202 508 loadbang;
+#X msg 202 531 1;
+#X obj 431 527 r voice3startsnd;
+#X obj 333 539 r voice3transpsnd;
+#X obj 293 605 r voice3speedsnd;
+#X obj 489 571 r voice3resetsnd;
+#X obj 545 607 r voice3smearsnd;
+#X obj 497 676 r voice3volumesnd;
+#X obj 393 766 r voice3pansnd;
+#X obj 870 528 r voice4transpsnd;
+#X obj 829 598 r voice4speedsnd;
+#X obj 967 519 r voice4startsnd;
+#X obj 1100 547 r voice4resetsnd;
+#X obj 1150 602 r voice4smearsnd;
+#X obj 1083 658 r voice4volumesnd;
+#X obj 937 763 r voice4pansnd;
+#X connect 0 0 1 0;
+#X connect 1 0 8 0;
+#X connect 2 0 1 1;
+#X connect 2 0 3 0;
+#X connect 4 0 1 2;
+#X connect 5 0 1 3;
+#X connect 6 0 7 0;
+#X connect 7 0 8 1;
+#X connect 8 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 40 0;
+#X connect 10 0 39 0;
+#X connect 11 0 12 0;
+#X connect 11 0 13 0;
+#X connect 12 0 15 0;
+#X connect 13 0 14 0;
+#X connect 14 0 10 1;
+#X connect 15 0 16 0;
+#X connect 16 0 9 1;
+#X connect 17 0 18 0;
+#X connect 18 0 22 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 1;
+#X connect 22 0 23 0;
+#X connect 22 0 24 0;
+#X connect 23 0 41 0;
+#X connect 24 0 42 0;
+#X connect 25 0 28 0;
+#X connect 26 0 27 0;
+#X connect 27 0 24 1;
+#X connect 28 0 29 0;
+#X connect 29 0 23 1;
+#X connect 30 0 25 0;
+#X connect 30 0 26 0;
+#X connect 31 0 20 0;
+#X connect 32 0 18 3;
+#X connect 33 0 18 2;
+#X connect 34 0 18 1;
+#X connect 34 0 19 0;
+#X connect 35 0 18 4;
+#X connect 36 0 18 5;
+#X connect 37 0 1 4;
+#X connect 38 0 1 5;
+#X connect 43 0 6 0;
+#X connect 44 0 45 0;
+#X connect 45 0 0 0;
+#X connect 45 0 17 0;
+#X connect 46 0 47 0;
+#X connect 47 0 51 0;
+#X connect 49 0 50 0;
+#X connect 50 0 51 1;
+#X connect 51 0 52 0;
+#X connect 51 0 53 0;
+#X connect 52 0 73 0;
+#X connect 53 0 72 0;
+#X connect 54 0 57 0;
+#X connect 55 0 56 0;
+#X connect 56 0 53 1;
+#X connect 57 0 58 0;
+#X connect 58 0 52 1;
+#X connect 59 0 60 0;
+#X connect 60 0 64 0;
+#X connect 62 0 63 0;
+#X connect 63 0 64 1;
+#X connect 64 0 65 0;
+#X connect 64 0 66 0;
+#X connect 65 0 74 0;
+#X connect 66 0 75 0;
+#X connect 67 0 70 0;
+#X connect 68 0 69 0;
+#X connect 69 0 66 1;
+#X connect 70 0 71 0;
+#X connect 71 0 65 1;
+#X connect 76 0 77 0;
+#X connect 77 0 46 0;
+#X connect 77 0 59 0;
+#X connect 78 0 47 3;
+#X connect 79 0 47 2;
+#X connect 80 0 47 1;
+#X connect 80 0 48 0;
+#X connect 81 0 47 4;
+#X connect 82 0 47 5;
+#X connect 83 0 49 0;
+#X connect 84 0 54 0;
+#X connect 84 0 55 0;
+#X connect 85 0 60 2;
+#X connect 86 0 60 1;
+#X connect 86 0 61 0;
+#X connect 87 0 60 3;
+#X connect 88 0 60 4;
+#X connect 89 0 60 5;
+#X connect 90 0 62 0;
+#X connect 91 0 67 0;
+#X connect 91 0 68 0;
+#X restore 337 108 pd soundstuff;
+#X obj 16 684 hsl 1000 20 0 1 0 1 voice3startsnd voice3startrcv voice_3_start
+-2 10 0 10 -167023 -1 -1 18483 1;
+#X obj 15 830 hsl 1000 20 0 1 0 1 voice4startsnd voice4startrcv voice_4_start
+-2 10 0 10 -162735 -1 -1 57787 1;
+#X obj 16 704 hsl 1000 20 -20 100 0 1 voice3speedsnd voice3speedrcv
+voice_3_speed -2 10 0 10 -174912 -1 -1 29350 1;
+#X obj 1020 704 bng 18 250 50 0 empty empty zero_speed 17 7 0 10 -262144
+-1 -1;
+#X obj 16 724 hsl 1000 20 -1200 1200 0 1 voice3transpsnd voice3transprcv
+voice_3_transposition -2 10 0 10 -204795 -1 -1 11350 1;
+#X obj 1020 722 bng 18 250 50 0 empty empty zero_transp 17 7 0 10 -262144
+-1 -1;
+#X obj 1020 686 bng 18 250 50 0 voice3resetsnd empty reset_to_start
+17 7 0 10 -262144 -1 -1;
+#X obj 16 744 hsl 1000 20 0 1 0 1 voice3smearsnd voice3smearrcv voice_3_smear
+-2 10 0 10 -105216 -1 -1 76200 1;
+#X obj 15 850 hsl 1000 20 -20 100 0 1 voice4speedsnd voice4speedrcv
+voice_4_speed -2 10 0 10 -126080 -1 -66577 43500 1;
+#X obj 15 870 hsl 1000 20 -1200 1200 0 1 voice4transpsnd voice4transprcv
+voice_4_transposition -2 10 0 10 -204480 -1 -1 1150 1;
+#X obj 15 890 hsl 1000 20 0 1 0 1 voice4smearsnd voice4smearrcv voice_4_smear
+-2 10 0 10 -7166 -1 -1 91700 1;
+#X obj 1019 851 bng 18 250 50 0 empty empty zero_speed 17 7 0 10 -262144
+-1 -1;
+#X obj 1019 871 bng 18 250 50 0 empty empty zero_transp 17 7 0 10 -262144
+-1 -1;
+#X obj 1019 830 bng 18 250 50 0 voice4resetsnd empty reset_to_start
+17 7 0 10 -262144 -1 -1;
+#X obj 16 764 hsl 1000 20 0 2 0 1 voice3volumesnd voice3volumercv voice_3_volume
+-2 10 0 10 -211327 -1 -1 55800 1;
+#X obj 15 910 hsl 1000 20 0 2 0 1 voice4volumesnd voice4volumercv voice_4_volume
+-2 10 0 10 -211583 -1 -1 66900 1;
+#X obj 16 784 hsl 1000 20 0 1 0 1 voice3pansnd voice3panrcv voice_3_pan
+-2 10 0 10 -200184 -1 -1 0 1;
+#X obj 15 930 hsl 1000 20 0 1 0 1 voice4pansnd voice4panrcv voice_4_pan
+-2 10 0 10 -204280 -1 -1 79000 1;
+#X obj 18 366 hsl 1000 10 0 1 0 0 empty voice3playheadrcv voice_3_playhead
+-2 6 0 10 -1 -257985 -262144 25624 1;
+#X obj 18 377 hsl 1000 10 0 1 0 0 empty voice4playheadrcv voice_4_playhead
+-2 6 0 10 -1 -257985 -262144 99900 1;
+#X msg 1145 744 \; voice3speedrcv 0;
+#X msg 1147 776 \; voice3transprcv 0;
+#X msg 1145 869 \; voice4speedrcv 0;
+#X msg 1146 899 \; voice4transprcv 0;
+#X msg 674 69 \; howlersample normalize;
+#X obj 531 104 r \$0-size;
+#X floatatom 531 127 20 0 0 0 - - -;
+#X obj 455 145 adabasedir;
+#X connect 8 0 9 0;
+#X connect 11 0 12 0;
+#X connect 20 0 23 0;
+#X connect 21 0 24 0;
+#X connect 29 0 3 1;
+#X connect 30 0 3 0;
+#X connect 35 0 52 0;
+#X connect 37 0 53 0;
+#X connect 43 0 54 0;
+#X connect 44 0 55 0;
+#X connect 57 0 58 0;
